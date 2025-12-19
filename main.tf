@@ -51,3 +51,10 @@ module "compute" {
   subnet_id    = module.network.subnet_id
   public_ip_id = module.network.public_ip_id
 }
+
+module "storage" {
+  source              = "./modules/storage"
+  resource_group_name = azurerm_resource_group.this.name
+  location            = azurerm_resource_group.this.location
+  tags                = var.tags
+}
